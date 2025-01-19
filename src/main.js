@@ -1,22 +1,24 @@
-import _ from 'underscore';
-import './style.css';
+import _ from "underscore";
+import "./style.css";
 
 const miModulo = (() => {
   "use strict";
 
   //  No es adecuado inicializar un array con los nombres de las cartas
-  
-  const tipos = ["C", "D", "H", "S"], cartasEspeciales = ["A", "J", "Q", "K"];
-  let deck = [], puntosJugadores = [];
+
+  const tipos = ["C", "D", "H", "S"],
+    cartasEspeciales = ["A", "J", "Q", "K"];
+  let deck = [],
+    puntosJugadores = [];
 
   //  Referencias del HTML
   const btnPedir = document.querySelector("#btnPedir"),
-        btnDetener = document.querySelector("#btnDetener"),
-        btnNuevo = document.querySelector("#btnNuevo");
+    btnDetener = document.querySelector("#btnDetener"),
+    btnNuevo = document.querySelector("#btnNuevo");
 
-  const divCartasJugadores = document.querySelectorAll('.divCartas'),
-        puntosHTML = document.querySelectorAll("small");
-  
+  const divCartasJugadores = document.querySelectorAll(".divCartas"),
+    puntosHTML = document.querySelectorAll("small");
+
   //  Esta función crea un nuevo deck
   const inicializarJuego = (numJugadores = 2) => {
     deck = crearDeck();
@@ -26,9 +28,9 @@ const miModulo = (() => {
       puntosJugadores.push(0);
     }
 
-    puntosHTML.forEach(elem => elem.innerText = 0);
-    divCartasJugadores.forEach(elem => elem.innerHTML = '');
-    
+    puntosHTML.forEach((elem) => (elem.innerText = 0));
+    divCartasJugadores.forEach((elem) => (elem.innerHTML = ""));
+
     btnPedir.disabled = false;
     btnDetener.disabled = false;
   };
@@ -50,7 +52,7 @@ const miModulo = (() => {
     }
 
     //  Barajar de forma aleatoria la baraja
-    return _.shuffle(deck);;
+    return _.shuffle(deck);
   };
 
   //  Esta función me permite tomar una carta
@@ -75,7 +77,7 @@ const miModulo = (() => {
 
   const crearCarta = (carta, turno) => {
     const imgCarta = document.createElement("img");
-    imgCarta.src = `../assets/img/${carta}.png`;
+    imgCarta.src = `/assets/img/${carta}.png`;
     imgCarta.classList.add("carta");
     divCartasJugadores[turno].append(imgCarta);
   };
@@ -86,10 +88,10 @@ const miModulo = (() => {
       puntosMinimos === puntosComputadora
         ? alert("Nadie gana.")
         : puntosMinimos > 21
-          ? alert("Computadora gana")
-          : puntosComputadora > 21
-            ? alert("Jugador gana.")
-            : alert("Computadora gana");
+        ? alert("Computadora gana")
+        : puntosComputadora > 21
+        ? alert("Jugador gana.")
+        : alert("Computadora gana");
     }, 100);
   };
 
@@ -130,11 +132,11 @@ const miModulo = (() => {
     turnoComputadora(puntosJugadores[0]);
   });
 
-  btnNuevo.addEventListener("click", () => { 
+  btnNuevo.addEventListener("click", () => {
     inicializarJuego();
   });
 
   return {
-    nuevoJuego: inicializarJuego
+    nuevoJuego: inicializarJuego,
   };
 })();
