@@ -75,7 +75,7 @@ const miModulo = (() => {
 
   const crearCarta = (carta, turno) => {
     const imgCarta = document.createElement("img");
-    imgCarta.src = `./assets/img/${carta}.png`;
+    imgCarta.src = `../assets/img/${carta}.png`;
     imgCarta.classList.add("carta");
     divCartasJugadores[turno].append(imgCarta);
   };
@@ -133,7 +133,7 @@ const miModulo = (() => {
   btnNuevo.addEventListener("click", () => { 
     inicializarJuego();
   });
-  
+
   return {
     nuevoJuego: inicializarJuego
   };
