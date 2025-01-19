@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import './style.css';
 
 const miModulo = (() => {
@@ -129,10 +130,10 @@ const miModulo = (() => {
     turnoComputadora(puntosJugadores[0]);
   });
 
-  //btnNuevo.addEventListener("click", () => { 
-  //  inicializarJuego();
-  //});
-
+  btnNuevo.addEventListener("click", () => { 
+    inicializarJuego();
+  });
+  
   return {
     nuevoJuego: inicializarJuego
   };
